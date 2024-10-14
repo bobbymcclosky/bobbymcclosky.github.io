@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Notes & Presentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        #presentation {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        #notes {
+            width: 90%;
+            height: 300px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meeting Notes with Presentation</h1>
+        <!-- Embed your Google Slides here -->
+        <iframe id="presentation" src="https://docs.google.com/presentation/d/YOUR_SLIDES_ID/embed" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <textarea id="notes" placeholder="Take your meeting notes here..."></textarea>
+        <button onclick="saveNotes()">Save Notes</button>
+    </div>
+
+    <script>
+        // Load saved notes from localStorage
+        window.onload = function() {
+            document.getElementById('notes').value = localStorage.getItem('meetingNotes') || '';
+        };
+
+        // Save notes to localStorage
+        function saveNotes() {
+            const notes = document.getElementById('notes').value;
+            localStorage.setItem('meetingNotes', notes);
+            alert('Notes saved successfully!');
+        }
+    </script>
+</body>
+</html>
