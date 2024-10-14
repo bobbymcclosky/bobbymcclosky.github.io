@@ -1,101 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robert McClosky - Home</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(90deg, #007bff, #00bfff);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        nav a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-        section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            font-weight: 600;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #007bff;
-        }
-        p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robert McClosky - Personal Website</title>
+  </head>
+  <body>
+    <header>
+      <h1>Robert McClosky - Lafayette Class of 2026</h1>
 
-<header>
-    <h1>Robert McCloksy - Lafayette Class of 2026</h1>
-    <p>Welcome to my personal website! I am using this github page to practice my web dev skills as well as highlighting my current work.</p>
-</header>
+    <section>
+      <h2>Welcome</h2>
+      <p>
+        Welcome to my personal website! I am using this github page to practice
+        my web dev skills as well as highlighting my current work.
+      </p>
+    </header>
 
-<nav>
-    <a href="resume.html">Resume</a>
-    <a href="linkedin.html">LinkedIn</a>
-    <a href="research.html">Current Research</a>
-</nav>
+    <div class="login-container" id="login-container">
+        <div class="login-form">
+          <h2>Login</h2>
+          <input type="text" id="username" placeholder="Username">
+          <input type="password" id="password" placeholder="Password">
+          <button onclick="login()">Login</button>
+        </div>
+      </div>
+      
+      <nav>
+        <a href="resume.html" class="nav-link" onclick="return checkLogin()">Resume</a>
+        <a href="linkedin.html" class="nav-link" onclick="return checkLogin()">LinkedIn</a>
+        <a href="research.html" class="nav-link" onclick="return checkLogin()">Current Research</a>
+      </nav>
 
-<section>
-    <h2>Welcome</h2>
-    <p>This is my personal website where you can find information about my professional journey, research, and ways to connect with me.</p>
-</section>
-
-<footer>
-    <p>© 2024 McClosky</p>
-</footer>
-
-</body>
-</html>
-
+      <footer>
+        <p>© 2024 McClosky</p>
+      </footer>
+      
+      <script>
+        let isLoggedIn = false;
+      
+        function login() {
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+      
+          // Simple validation (for demonstration purposes only)
+          if (username === 'bobby' && password === 'bobbywebsite') {
+            alert('Login successful!');
+            document.getElementById('login-container').style.display = 'none';
+            isLoggedIn = true;
+          } else {
+            alert('Invalid credentials, please try again.');
+          }
+        }
+      
+        function checkLogin() {
+          if (!isLoggedIn) {
+            alert('You must log in first.');
+            return false;
+          }
+          return true;
+        }
+      </script>
