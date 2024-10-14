@@ -2,254 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Notion-like Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            display: flex;
-            height: 100vh;
-        }
-        #sidebar {
-            width: 250px;
-            background-color: #f4f4f4;
-            border-right: 1px solid #ddd;
-            padding: 10px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        #main {
-            flex: 1;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        #notesList {
-            list-style: none;
             padding: 0;
+            background-color: #f4f4f4;
         }
-        #notesList li {
-            padding: 8px;
-            cursor: pointer;
-            border-bottom: 1px solid #ddd;
-        }
-        #notesList li:hover {
-            background-color: #eaeaea;
-        }
-        #createNoteBtn {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
+        header {
             background-color: #007bff;
             color: white;
-            border: none;
-            cursor: pointer;
+            padding: 20px;
+            text-align: center;
         }
-        #createNoteBtn:hover {
+        nav {
+            background-color: #343a40;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
             background-color: #0056b3;
         }
-        #editor {
-            width: 100%;
-            height: calc(100vh - 100px);
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 16px;
+        section {
+            padding: 40px;
+            text-align: center;
         }
-        #saveBtn, #deleteBtn {
-            padding: 10px 20px;
-            margin-right: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-            border: none;
+        #resume, #linkedin, #research {
+            margin-bottom: 50px;
+        }
+        footer {
+            background-color: #343a40;
             color: white;
-        }
-        #saveBtn {
-            background-color: #28a745;
-        }
-        #saveBtn:hover {
-            background-color: #218838;
-        }
-        #deleteBtn {
-            background-color: #dc3545;
-        }
-        #deleteBtn:hover {
-            background-color: #c82333;
-        }
-        a.note-link {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a.note-link:hover {
-            text-decoration: underline;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <div id="sidebar">
-        <h2>My Notes</h2>
-        <ul id="notesList"></ul>
-        <button id="createNoteBtn">+ New Note</button>
-    </div>
+<header>
+    <h1>Your Name</h1>
+    <p>Welcome to my personal website!</p>
+</header>
 
-    <div id="main">
-        <h2 id="noteTitle">Select or Create a Note</h2>
-        <textarea id="editor" placeholder="Start writing your note here..." disabled></textarea>
-        <div>
-            <button id="saveBtn" style="display: none;">Save</button>
-            <button id="deleteBtn" style="display: none;">Delete</button>
-        </div>
-    </div>
+<nav>
+    <a href="#resume">Resume</a>
+    <a href="#linkedin">LinkedIn</a>
+    <a href="#research">Current Research</a>
+</nav>
 
-    <script>
-        // Utility Functions
-        function getNotes() {
-            const notes = localStorage.getItem('notes');
-            return notes ? JSON.parse(notes) : {};
-        }
+<section id="resume">
+    <h2>My Resume</h2>
+    <p><a href="link-to-your-resume.pdf" target="_blank">Click here to view my resume</a></p>
+</section>
 
-        function saveNotes(notes) {
-            localStorage.setItem('notes', JSON.stringify(notes));
-        }
+<section id="linkedin">
+    <h2>Connect on LinkedIn</h2>
+    <p>Check out my <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn profile</a> to connect with me and see more about my professional journey.</p>
+</section>
 
-        function createNote(title, content = '') {
-            const notes = getNotes();
-            notes[title] = content;
-            saveNotes(notes);
-            renderNotesList();
-        }
+<section id="research">
+    <h2>Current Research</h2>
+    <p>I'm currently working on <strong>Deep Reinforcement Learning</strong> and its applications in robotics. You can follow my research progress and weekly updates on my <a href="https://github.com/your-research-repo" target="_blank">GitHub repository</a>.</p>
+</section>
 
-        function deleteNote(title) {
-            const notes = getNotes();
-            delete notes[title];
-            saveNotes(notes);
-            renderNotesList();
-            clearEditor();
-        }
+<footer>
+    <p>© 2024 Your Name</p>
+</footer>
 
-        function renderNotesList() {
-            const notesList = document.getElementById('notesList');
-            notesList.innerHTML = '';
-            const notes = getNotes();
-            const titles = Object.keys(notes).sort();
-            titles.forEach(title => {
-                const li = document.createElement('li');
-                li.textContent = title;
-                li.addEventListener('click', () => openNote(title));
-                notesList.appendChild(li);
-            });
-        }
-
-        function openNote(title) {
-            const notes = getNotes();
-            const content = notes[title];
-            document.getElementById('noteTitle').textContent = title;
-            const editor = document.getElementById('editor');
-            editor.value = content;
-            editor.disabled = false;
-            document.getElementById('saveBtn').style.display = 'inline-block';
-            document.getElementById('deleteBtn').style.display = 'inline-block';
-            currentNote = title;
-        }
-
-        function clearEditor() {
-            document.getElementById('noteTitle').textContent = 'Select or Create a Note';
-            const editor = document.getElementById('editor');
-            editor.value = '';
-            editor.disabled = true;
-            document.getElementById('saveBtn').style.display = 'none';
-            document.getElementById('deleteBtn').style.display = 'none';
-            currentNote = null;
-        }
-
-        function saveCurrentNote() {
-            if (currentNote) {
-                const notes = getNotes();
-                notes[currentNote] = document.getElementById('editor').value;
-                saveNotes(notes);
-                renderNotesList();
-                alert('Note saved!');
-            }
-        }
-
-        function linkify(text) {
-            const regex = /\[\[([^\]]+)\]\]/g;
-            return text.replace(regex, (match, p1) => {
-                return `<a href="#" class="note-link" data-title="${p1}">[[${p1}]]</a>`;
-            });
-        }
-
-        function displayNoteContent(title, content) {
-            document.getElementById('main').innerHTML = `
-                <h2>${title}</h2>
-                <div>${linkify(content).replace(/\n/g, '<br>')}</div>
-                <button id="editBtn">Edit</button>
-            `;
-            document.getElementById('editBtn').addEventListener('click', () => {
-                openNote(title);
-            });
-            // Add event listeners to links
-            document.querySelectorAll('a.note-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const noteTitle = e.target.getAttribute('data-title');
-                    if (getNotes()[noteTitle]) {
-                        openNote(noteTitle);
-                    } else {
-                        if (confirm(`Note "${noteTitle}" does not exist. Create it?`)) {
-                            createNote(noteTitle);
-                            openNote(noteTitle);
-                        }
-                    }
-                });
-            });
-        }
-
-        // Initialization
-        let currentNote = null;
-
-        document.getElementById('createNoteBtn').addEventListener('click', () => {
-            const title = prompt('Enter note title:');
-            if (title) {
-                if (getNotes()[title]) {
-                    alert('Note with this title already exists.');
-                } else {
-                    createNote(title);
-                    openNote(title);
-                }
-            }
-        });
-
-        document.getElementById('saveBtn').addEventListener('click', saveCurrentNote);
-
-        document.getElementById('deleteBtn').addEventListener('click', () => {
-            if (currentNote && confirm(`Are you sure you want to delete "${currentNote}"?`)) {
-                deleteNote(currentNote);
-            }
-        });
-
-        document.getElementById('editor').addEventListener('input', () => {
-            // Optional: Auto-save feature
-        });
-
-        renderNotesList();
-
-        // Handle displaying linked notes
-        document.getElementById('main').addEventListener('click', (e) => {
-            if (e.target.classList.contains('note-link')) {
-                e.preventDefault();
-                const noteTitle = e.target.getAttribute('data-title');
-                if (getNotes()[noteTitle]) {
-                    openNote(noteTitle);
-                } else {
-                    if (confirm(`Note "${noteTitle}" does not exist. Create it?`)) {
-                        createNote(noteTitle);
-                        openNote(noteTitle);
-                    }
-                }
-            }
-        });
-
-    </script>
 </body>
 </html>
