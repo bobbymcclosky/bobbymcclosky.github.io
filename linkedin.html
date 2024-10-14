@@ -3,75 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - LinkedIn</title>
+    <title>Robert McClosky - LinkedIn</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
         header {
-            background-color: #007bff;
+            background: linear-gradient(90deg, #007bff, #00bfff);
             color: white;
-            padding: 20px;
+            padding: 40px 0;
             text-align: center;
         }
         nav {
-            background-color: #343a40;
-            padding: 10px;
             display: flex;
             justify-content: center;
+            padding: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         nav a {
-            color: white;
+            color: #007bff;
             text-decoration: none;
-            margin: 0 20px;
-            padding: 8px 16px;
-            background-color: #007bff;
+            margin: 0 15px;
+            font-weight: 500;
+            padding: 10px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         nav a:hover {
-            background-color: #0056b3;
+            background-color: #007bff;
+            color: white;
         }
         section {
-            padding: 40px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
             text-align: center;
         }
+        h1 {
+            font-weight: 600;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
         footer {
-            background-color: #343a40;
+            background-color: #333;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Your Name - LinkedIn Profile</h1>
-    </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="research.html">Research</a>
-        <a href="linkedin.html">LinkedIn</a>
-    </nav>
+<header>
+    <h1>Robert McClosky - LinkedIn Profile</h1>
+    <p>Connect with me on LinkedIn!</p>
+</header>
 
-    <section>
-        <h2>Connect with me on LinkedIn</h2>
+<nav>
+    <a href="resume.html">Resume</a>
+    <a href="linkedin.html">LinkedIn</a>
+    <a href="research.html">Current Research</a>
+</nav>
 
-        <!-- LinkedIn Badge Embed Code -->
-        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="robert-mcclosky-4b4a35258" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/robert-mcclosky-4b4a35258?trk=profile-badge">Robert McClosky</a></div>
-        
-        </div>
-        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    </section>
+<section>
+    <h2>My LinkedIn Profile</h2>
+    <!-- LinkedIn Badge Embed Code -->
+    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="your-linkedin-username" data-version="v1">
+        <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/your-linkedin-username">Robert McClosky</a>
+    </div>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>© 2024 McClosky</p>
+</footer>
+
 </body>
 </html>
